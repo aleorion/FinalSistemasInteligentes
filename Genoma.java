@@ -10,4 +10,15 @@ public class Genoma
         //FILL LIST WITH RANDOM GENES size of genome.
     }
 
+    public String toString()
+    {
+        String str = "[";
+        for (Gen g : genes)
+        {
+            str += g+", ";    
+        }
+        str += "]";
+        return str;
+    }
+
  }

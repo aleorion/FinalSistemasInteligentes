@@ -12,4 +12,9 @@ public class Gen
         //Create a ramdom valid gen from profesor, horario, salon.
     }
 
+    public String toString()
+    {
+        return "(m:"+m+" -p:"+p+" -h:"+h+" -s:"+s+")";
+    }
+
 } 

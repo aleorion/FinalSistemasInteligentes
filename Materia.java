@@ -6,4 +6,9 @@ public class Materia
     {
         this.id = id;
     }
+
+    public String toString()
+    {
+        return id+"";
+    }
 }

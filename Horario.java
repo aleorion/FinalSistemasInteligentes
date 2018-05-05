@@ -6,4 +6,10 @@ public class Horario
     {
         this.id = id;
     }
+
+    public String toString()
+    {
+        return id+"";
+    }
+
 }

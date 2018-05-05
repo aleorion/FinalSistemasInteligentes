@@ -6,4 +6,10 @@ public class Salon
     {
         this.id = id;
     }
+
+    public String toString()
+    {
+        return id+"";
+    }
+
 }
