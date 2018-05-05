@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Gen
 {
@@ -7,9 +8,21 @@ public class Gen
     Horario h;
     Salon s;
 
-    public Gen(ArrayList<Profesor> profesores, Salon salones, Materia m)
+    public Gen(ArrayList<Profesor> profesores, ArrayList<Salon> salones, Materia m)
     {
         //Create a ramdom valid gen from profesor, horario, salon.
+        Random rn = new Random();
+        this.m = m;
+
+        int randomp = Math.abs(rn.nextInt())%profesores.size();
+        int randoms = Math.abs(rn.nextInt())%salones.size();
+
+        this.p = profesores.get(randomp);
+        this.s = salones.get(randoms);
+
+        int randomh = Math.abs(rn.nextInt())%this.p.horarios.size();
+
+        this.h = this.p.horarios.get(randomh);
     }
 
     public String toString()

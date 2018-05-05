@@ -16,11 +16,8 @@ public class Main
         //Code will use comparison by memory pointer not by value.
         parseFile(new File(args[0]));
 
-        //debug
-        for (Profesor p : profesores)
-        {
-            System.out.println(p);    
-        }
+        World muestra = new World(30, profesores, salones, materias);
+        System.out.println(muestra);
 
     }
 
