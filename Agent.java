@@ -22,6 +22,14 @@ public class Agent implements Comparable
         this.performance = ((double)adn.colisions())/((double)(adn.size()*2.0));
     }
 
+    public Agent breed(Agent a, ArrayList<Profesor> p, ArrayList<Salon> s, ArrayList<Materia> m)
+    {
+        Agent baby = new Agent(p,s,m);
+        baby.adn.reestructurateGenome(this.adn,a.adn);
+        baby.calculatePerformance();
+        return baby;
+    }
+
     @Override
     public int compareTo(Object o)
     {

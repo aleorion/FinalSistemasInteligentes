@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Genoma
  {
@@ -56,6 +57,23 @@ public class Genoma
     public int size()
     {
         return genes.size();
+    }
+
+    public void reestructurateGenome(Genoma x, Genoma y)
+    {
+        //25% chance to change!!
+        Random rn = new Random();
+        for (int i = 0; i < genes.size(); i++)
+        {
+            if(Math.abs(rn.nextInt())%4 == 0)
+            {
+                //take Y
+                this.genes.set(i, y.genes.get(i));
+            }else
+            {
+                this.genes.set(i, x.genes.get(i));
+            }
+        }
     }
 
  }

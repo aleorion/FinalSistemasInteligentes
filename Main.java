@@ -12,13 +12,39 @@ public class Main
 
     public static void main(String[] args)
     {
+        long startTime = System.currentTimeMillis();
+
+        Scanner scan = new Scanner(System.in);
         //Main code
         //Code will use comparison by memory pointer not by value.
-        parseFile(new File(args[0]));
+        if(args.length > 0)
+        {
+            parseFile(new File(args[0]));
+        }else
+        {
+            System.out.println("Nombre del archivo de ejemplo:");
+            parseFile(new File(scan.nextLine()));
+        }
 
         World muestra = new World(30, profesores, salones, materias);
-        System.out.println(muestra);
+        //System.out.println("Poblacion inicial:");
+        //System.out.println(muestra);
 
+        while(!muestra.solved())
+        {
+            muestra.breed(profesores, salones, materias);
+            muestra.trimm(0.25);
+            muestra.trimmTo(200);
+            System.out.println("Tamaño actual de población: "+muestra.size());
+        }
+
+        System.out.println(muestra.solution());
+
+        long stopTime = System.currentTimeMillis();
+        long elapsedTime = stopTime - startTime;
+        System.out.println("ELAPSED TIME: "+elapsedTime+" miliseconds.");
+
+        scan.close();
     }
 
     public static void parseFile(File fname)
