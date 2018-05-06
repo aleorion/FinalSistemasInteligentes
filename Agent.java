@@ -17,6 +17,11 @@ public class Agent implements Comparable
         return ":"+performance+":"+adn+":";
     }
 
+    public String smartView()
+    {
+        return ":"+performance+"{"+adn.smartView()+"}";
+    }
+
     public void calculatePerformance()
     {
         this.performance = ((double)adn.colisions())/((double)(adn.size()*2.0));

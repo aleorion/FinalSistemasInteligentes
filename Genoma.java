@@ -26,6 +26,16 @@ public class Genoma
         return str;
     }
 
+    public String smartView()
+    {
+        String str = "";
+        for (Gen g : genes)
+        {
+            str += g.smartView()+", ";    
+        }
+        return str;
+    }
+
     public int colisions()
     {
         int c = 0;

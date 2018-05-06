@@ -11,4 +11,9 @@ public class Materia
     {
         return id+"";
     }
+    
+    public String smartView()
+    {
+        return ""+id;
+    }
 }

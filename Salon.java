@@ -12,4 +12,9 @@ public class Salon
         return id+"";
     }
 
+    public String smartView()
+    {
+        return ""+id;
+    }
+
 }

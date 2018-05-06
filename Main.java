@@ -13,8 +13,9 @@ public class Main
     public static void main(String[] args)
     {
         long startTime = System.currentTimeMillis();
-
         Scanner scan = new Scanner(System.in);
+        int poblacionInicial = 30;
+        int generaciones = 0;
         //Main code
         //Code will use comparison by memory pointer not by value.
         if(args.length > 0)
@@ -26,19 +27,28 @@ public class Main
             parseFile(new File(scan.nextLine()));
         }
 
-        World muestra = new World(30, profesores, salones, materias);
+        World muestra = new World(poblacionInicial, profesores, salones, materias);
         //System.out.println("Poblacion inicial:");
         //System.out.println(muestra);
-
         while(!muestra.solved())
         {
+            generaciones++;
             muestra.breed(profesores, salones, materias);
             muestra.trimm(0.25);
             muestra.trimmTo(200);
-            System.out.println("Tamaño actual de población: "+muestra.size());
+            System.out.println("Tamanio actual de poblacion: "+muestra.size()+" Generacion:"+(generaciones));
+            System.out.println("MEJOR: "+muestra.top().smartView());
+            long currentTime = System.currentTimeMillis();
+            if(currentTime-startTime > 1000)
+            {
+                System.out.println("TIMEOUT! Does solution exists?");
+                System.out.println("ELAPSED TIME: "+(currentTime-startTime)+" miliseconds.");
+                System.exit(0);
+            }
         }
 
         System.out.println(muestra.solution());
+        System.out.println("----------\nSMART VIEW SOLUTION:\n"+muestra.solution().smartView());
 
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;

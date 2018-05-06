@@ -30,4 +30,9 @@ public class Gen
         return "(m:"+m+" -p:"+p+" -h:"+h+" -s:"+s+")";
     }
 
+    public String smartView()
+    {
+        return "(m:"+m.smartView()+" p:"+p.smartView()+" h:"+h.smartView()+" s:"+s.smartView()+")";
+    }
+
 } 

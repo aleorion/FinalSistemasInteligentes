@@ -12,4 +12,9 @@ public class Horario
         return id+"";
     }
 
+    public String smartView()
+    {
+        return ""+id;
+    }
+    
 }

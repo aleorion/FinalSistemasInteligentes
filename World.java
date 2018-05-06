@@ -53,6 +53,15 @@ public class World
         return null;
     }
 
+    public Agent top()
+    {
+        if(population.size() > 0)
+        {
+            return population.get(0);
+        }
+        return null;
+    }
+
     public void breed(ArrayList<Profesor> p, ArrayList<Salon> s, ArrayList<Materia> m)
     {
         Random rn = new Random();

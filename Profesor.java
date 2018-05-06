@@ -38,4 +38,8 @@ public class Profesor
         return str;
     }
 
+    public String smartView()
+    {
+        return ""+id;
+    }
 }
