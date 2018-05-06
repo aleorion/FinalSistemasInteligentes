@@ -12,21 +12,47 @@ public class Main
 
     public static void main(String[] args)
     {
-        long startTime = System.currentTimeMillis();
         Scanner scan = new Scanner(System.in);
-        int poblacionInicial = 30;
-        int generaciones = 0;
+        int mode = 0;
+        String base = "";
+        int num = 0;
         //Main code
         //Code will use comparison by memory pointer not by value.
-        if(args.length > 0)
+        if(args.length == 1)
         {
-            parseFile(new File(args[0]));
+            File f = new File(args[0]);
+            solve(f);
+            mode = 0;
+        }else if(args.length == 2)
+        {
+            base = args[0];
+            num = Integer.parseInt(args[1]);
+            mode = 1;
         }else
         {
             System.out.println("Nombre del archivo de ejemplo:");
-            parseFile(new File(scan.nextLine()));
+            solve(new File(scan.nextLine()));
         }
 
+        if(mode == 1)
+        {
+            for (int i = 0; i < num; i++)
+            {
+                File f = new File(i+base);
+                solve(f);    
+            }
+        }
+
+        scan.close();
+    }
+
+    public static void solve(File f)
+    {
+        System.out.println("***********************************************");
+        long startTime = System.currentTimeMillis();
+        int poblacionInicial = 30;
+        int generaciones = 0;
+        parseFile(f);
         World muestra = new World(poblacionInicial, profesores, salones, materias);
         //System.out.println("Poblacion inicial:");
         //System.out.println(muestra);
@@ -36,25 +62,24 @@ public class Main
             muestra.breed(profesores, salones, materias);
             muestra.trimm(0.25);
             muestra.trimmTo(200);
-            System.out.println("Tamanio actual de poblacion: "+muestra.size()+" Generacion:"+(generaciones));
-            System.out.println("MEJOR: "+muestra.top().smartView());
+            //System.out.println("Tamanio actual de poblacion: "+muestra.size()+" Generacion:"+(generaciones));
             long currentTime = System.currentTimeMillis();
             if(currentTime-startTime > 1000)
             {
+                System.out.println("xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx");
+                System.out.println("MEJOR: "+muestra.top().smartView());
                 System.out.println("TIMEOUT! Does solution exists?");
                 System.out.println("ELAPSED TIME: "+(currentTime-startTime)+" miliseconds.");
-                System.exit(0);
+                return;
             }
         }
 
-        System.out.println(muestra.solution());
+        //System.out.println(muestra.solution());
         System.out.println("----------\nSMART VIEW SOLUTION:\n"+muestra.solution().smartView());
 
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         System.out.println("ELAPSED TIME: "+elapsedTime+" miliseconds.");
-
-        scan.close();
     }
 
     public static void parseFile(File fname)
@@ -101,6 +126,7 @@ public class Main
     public static void init(int p, int m, int s)
     {
         int h = 8; // number of hours. Fixed number in document.
+        System.out.println("profesores:"+p+", materias:"+m+", salones:"+s);
 
         profesores = new ArrayList<Profesor>();
         salones = new ArrayList<Salon>();
