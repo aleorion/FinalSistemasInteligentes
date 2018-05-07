@@ -53,6 +53,25 @@ public class Main
         int poblacionInicial = 30;
         int generaciones = 0;
         parseFile(f);
+
+        //CAN BE SOLVED?
+        for (Materia m : materias)
+        {
+            boolean exists = false;
+            for (Profesor p : profesores)
+            {
+                if(p.materias.contains(m))
+                {
+                    exists = true;
+                }    
+            }
+            if(!exists)
+            {
+                System.out.println("CANT BE SOLVED, NOT A SINGLE -PROFESOR- CAN GIVE A CERTAIN -MATERIA-");
+                return;
+            }
+        }
+
         World muestra = new World(poblacionInicial, profesores, salones, materias);
         //System.out.println("Poblacion inicial:");
         //System.out.println(muestra);

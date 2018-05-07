@@ -20,6 +20,12 @@ public class Gen
         this.p = profesores.get(randomp);
         this.s = salones.get(randoms);
 
+        while(!this.p.materias.contains(m))
+        {
+            randomp = Math.abs(rn.nextInt())%profesores.size();
+            this.p = profesores.get(randomp);
+        }
+
         int randomh = Math.abs(rn.nextInt())%this.p.horarios.size();
 
         this.h = this.p.horarios.get(randomh);

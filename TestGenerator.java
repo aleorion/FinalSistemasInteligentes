@@ -30,7 +30,7 @@ public class TestGenerator
                     int h1 = random(6)+1;
                     int h2 = h1+random(8-h1)+1;
                     printWriter.print(h1+"-"+h2+",1");
-                    for (int k = 2; k < m; k++)
+                    for (int k = 2; k <= m; k++)
                     {
                         if(random(5) != 0)
                         {
