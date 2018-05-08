@@ -89,12 +89,13 @@ public class Main
                 System.out.println("MEJOR: "+muestra.top().smartView());
                 System.out.println("TIMEOUT! Does solution exists?");
                 System.out.println("ELAPSED TIME: "+(currentTime-startTime)+" miliseconds.");
+                System.out.println("Generations: "+generaciones);
                 return;
             }
         }
 
         //System.out.println(muestra.solution());
-        System.out.println(generaciones);
+        System.out.println("Generations: "+generaciones);
         System.out.println("----------\nSMART VIEW SOLUTION:\n"+muestra.solution().smartView());
 
         long stopTime = System.currentTimeMillis();
