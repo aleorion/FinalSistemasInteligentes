@@ -69,19 +69,22 @@ public class Genoma
         return genes.size();
     }
 
-    public void reestructurateGenome(Genoma x, Genoma y)
+    public void reestructurateGenome(Genoma x, Genoma y, ArrayList<Profesor> p, ArrayList<Salon> s, ArrayList<Materia> m)
     {
         //25% chance to change!!
         Random rn = new Random();
         for (int i = 0; i < genes.size(); i++)
         {
+            Gen actual = genes.get(i);
             if(Math.abs(rn.nextInt())%4 == 0)
             {
-                //take Y
                 this.genes.set(i, y.genes.get(i));
-            }else
+            }else if(Math.abs(rn.nextInt())%30 != 0)
             {
                 this.genes.set(i, x.genes.get(i));
+            }else
+            {
+                this.genes.set(i, new Gen(p,s,actual.m));
             }
         }
     }

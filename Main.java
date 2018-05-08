@@ -50,7 +50,7 @@ public class Main
     {
         System.out.println("***********************************************");
         long startTime = System.currentTimeMillis();
-        int poblacionInicial = 30;
+        int poblacionInicial = 50;
         int generaciones = 0;
         parseFile(f);
 
@@ -83,7 +83,7 @@ public class Main
             muestra.trimmTo(200);
             //System.out.println("Tamanio actual de poblacion: "+muestra.size()+" Generacion:"+(generaciones));
             long currentTime = System.currentTimeMillis();
-            if(currentTime-startTime > 1000)
+            if(currentTime-startTime > 10000)
             {
                 System.out.println("xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx  xx");
                 System.out.println("MEJOR: "+muestra.top().smartView());
@@ -94,6 +94,7 @@ public class Main
         }
 
         //System.out.println(muestra.solution());
+        System.out.println(generaciones);
         System.out.println("----------\nSMART VIEW SOLUTION:\n"+muestra.solution().smartView());
 
         long stopTime = System.currentTimeMillis();

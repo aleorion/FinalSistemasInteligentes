@@ -30,7 +30,7 @@ public class Agent implements Comparable
     public Agent breed(Agent a, ArrayList<Profesor> p, ArrayList<Salon> s, ArrayList<Materia> m)
     {
         Agent baby = new Agent(p,s,m);
-        baby.adn.reestructurateGenome(this.adn,a.adn);
+        baby.adn.reestructurateGenome(this.adn,a.adn,p,s,m);
         baby.calculatePerformance();
         return baby;
     }
