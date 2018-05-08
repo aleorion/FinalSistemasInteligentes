@@ -7,7 +7,7 @@ public class TestGenerator
     public static void main(String[] args)
     {
         try{
-            int exp = 50;
+            int exp = 200;
             if(args.length == 0 )
             {
                 System.out.println("Needs number of files");

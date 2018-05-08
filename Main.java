@@ -79,8 +79,8 @@ public class Main
         {
             generaciones++;
             muestra.breed(profesores, salones, materias);
-            muestra.trimm(0.25);
-            muestra.trimmTo(200);
+            muestra.trimm(0.4);
+            muestra.trimmTo(300);
             //System.out.println("Tamanio actual de poblacion: "+muestra.size()+" Generacion:"+(generaciones));
             long currentTime = System.currentTimeMillis();
             if(currentTime-startTime > 10000)
